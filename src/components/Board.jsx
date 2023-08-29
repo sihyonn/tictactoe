@@ -10,8 +10,20 @@ export default class Board extends Component {
     };
   }
 
+  // 원본배열 복사하고 클릭한것의 상태변경
+  handleClick(i) {
+    const squares = this.state.squares.slice();
+    squares[i] = "X";
+    this.setState({ squares: squares });
+  }
+
   renderSquare(i) {
-    return <Square value={this.state.squares[i]} />;
+    return (
+      <Square
+        value={this.state.squares[i]}
+        onClick={() => this.handleClick(i)}
+      />
+    );
   }
 
   render() {
